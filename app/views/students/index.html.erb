@@ -1,0 +1,97 @@
+<h1> All Student List  </h1>
+<div align="right">
+	<%= link_to "Sign Out", destroy_admin_user_session_path, 
+	method: :delete %>
+</div>
+<table>
+	<thead>
+		<tr>
+			<th> Sr.no </th>
+			<th> First Name</th>
+			<th> Last Name</th>
+			<th> Address</th>
+			<th> Action</th>
+		</tr>
+	</thead>
+	<tbody>
+		
+		<% @students.each_with_index do |student, i| %>
+		<tr>
+			<td> <%= i+1 %></td>
+			<td> <%= student.first_name %></td>
+			<td> <%= student.last_name %></td>
+			<td> <%= student.address %></td>
+			<td>
+				<%= link_to ' Show ', student_path(student) %> &nbsp;
+				<%= link_to ' Edit ', edit_student_path(student) %> &nbsp;
+				<%= link_to 'Delete', student_path(student),
+						method: :delete,
+						data: {confirm: 'Are you sure?'} %> 
+			</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<p> 
+	<%= link_to "New Student", new_student_path %> 
+</p>
+
+<style>
+		/* Basic reset */
+	* {
+	  margin: 0;
+	  padding: 0;
+	  box-sizing: border-box;
+	}
+
+	/* Style for the header */
+	h1 {
+	  text-align: center;
+	  margin-bottom: 20px;
+	  font-family: Arial, sans-serif;
+	  color: #333;
+	}
+
+	/* Style for the table */
+	table {
+	  width: 80%;
+	  margin: 0 auto;
+	  border-collapse: collapse;
+	  font-family: Arial, sans-serif;
+	}
+
+	/* Style for the table header */
+	thead {
+	  background-color: #f2f2f2;
+	}
+
+	thead tr {
+	  border-bottom: 2px solid #ddd;
+	}
+
+	thead th {
+	  padding: 10px;
+	  text-align: left;
+	  font-weight: bold;
+	  color: #555;
+	}
+
+	/* Style for the table rows */
+	tbody tr {
+	  border-bottom: 1px solid #ddd;
+	}
+
+	tbody tr:nth-child(even) {
+	  background-color: #f9f9f9;
+	}
+
+	tbody td {
+	  padding: 10px;
+	  color: #333;
+	}
+
+	tbody tr:hover {
+	  background-color: #f1f1f1;
+	}
+
+</style>

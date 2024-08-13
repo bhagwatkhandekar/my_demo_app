@@ -1,0 +1,33 @@
+<%= form_with(model: @student, local: true) do |form| %>
+<body bgcolor="lavender"> </body>
+<% if @student.errors.any? %>
+<div student.="error_explanation">
+	<% @student.errors.full_messages.each do |msg| %>
+	<li><%= msg %></li>
+	<% end %>
+	<% end %>
+</div>
+<p>
+	<%= form.label :firstname %> &emsp; &emsp; 
+	<%= form.text_field :firstname %>
+</p>
+
+<p>
+	<%= form.label :lastname %> &emsp; &emsp;
+	<%= form.text_field :lastname %>
+</p>
+
+<p>
+	<%= form.label :address %> &emsp; &emsp; &nbsp;  &nbsp;
+	<%= form.text_field :address %>
+</p>
+
+
+<p>
+
+	<%= form.submit %>
+</p>
+
+<% end %>
+
+<%= link_to 'BACK', students_path %>
